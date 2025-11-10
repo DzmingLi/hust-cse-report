@@ -1,0 +1,15 @@
+[package]
+name = "hust-cse-report"
+version = "0.1.0"
+entrypoint = "template.typ"
+authors = ["Dzming Li <i@dzmingli>"]
+license = "GPL-3.0-or-later"
+categories = ["report"]
+repository = "https://github.com/DzmingLi/hust-cse-report"
+description = "华中科技大学网络空间安全学院实验报告的（非官方）Typst模板。" 
+keywords = ["华中科技大学网安学院","华科网安学院","HUST","CSE","report","实验报告"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"
