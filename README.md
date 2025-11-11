@@ -1,4 +1,7 @@
-# hust-cse-report
+# modern-hust-cse-report
+
+An (unofficial) Typst template for lab reports at the School of Cyber Science and Engineering, Huazhong University of Science and Technology (HUST).
+
 此项目是华中科技大学网络空间安全学院实验/实践报告的通用Typst 模板。
 
 计算机学院的大多数课现已提供了统一的LaTeX模板，不过考虑到网安没有新生实践课，LaTeX的上手曲线太高了。并且LaTeX无敌慢的本地编译速度，已经本地安装相对麻烦也都是问题。
@@ -40,13 +43,13 @@
 在当前目录初始化项目：
 
 ```bash
-typst init @preview/hust-cse-report
+typst init @preview/modern-hust-cse-report
 ```
 
 指定自定义目录名称：
 
 ```bash
-typst init @preview/hust-cse-report my-report
+typst init @preview/modern-hust-cse-report my-report
 ```
 
 ### 方法二：手动导入
@@ -54,7 +57,7 @@ typst init @preview/hust-cse-report my-report
 在已有 Typst 项目中导入该模板并填写信息：
 
 ```typst
-#import "@preview/hust-cse-report:0.1.0": report, fig, tbl
+#import "@preview/modern-hust-cse-report:0.1.0": report, fig, tbl
 
 #show: report.with(
   name: "李华",
