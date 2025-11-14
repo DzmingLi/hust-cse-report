@@ -1,6 +1,6 @@
 [package]
 name = "modern-hust-cse-report"
-version = "0.1.0"
+version = "0.1.1"
 entrypoint = "template.typ"
 authors = ["Dzming Li <i@dzmingli>"]
 license = "GPL-3.0-or-later"

@@ -4,7 +4,7 @@
 #let fig(image-path, caption: "", width: auto) = {
   figure(
     image(image-path, width: width),
-    caption: text(font: ("Times New Roman", "SimHei"), size: 14pt)[#caption],
+    caption: text(font: ("Times New Roman", "SimHei"), size: 12pt)[#caption],
     supplement: [图],
     numbering: (..nums) => {
       let values = nums.pos()
@@ -28,8 +28,8 @@
 #let tbl(content, caption: "") = {
   figure(
     content,
-    caption: text(font: ("Times New Roman", "SimHei"), size: 14pt)[#caption],
-    supplement: [表],
+    caption: text(font: ("Times New Roman", "SimHei"), size: 12pt)[#caption],
+    supplement: text(font: "SimHei")[表],
     numbering: (..nums) => {
       let values = nums.pos()
       if values.len() == 1 {
@@ -73,7 +73,7 @@
     }
     set text(font: ("Times New Roman", "SimHei"), size: 18pt)
     set align(center)
-    set block(below: 1.5em)
+    set block(below: 1em)
     it
   }
 
@@ -82,6 +82,18 @@
     counter(figure.where(kind: table)).update(0)
     counter(math.equation).update(0)
     set text(font: ("Times New Roman", "SimHei"), size: 14pt)
+    set block(above: 1.5em, below: 1.5em)
+    it
+  }
+
+  show heading.where(level: 3): it => {
+    set text(font: ("Times New Roman", "SimHei"), size: 12pt, weight: "bold")
+    set block(above: 1.5em, below: 1.5em)
+    it
+  }
+
+  show heading.where(level: 4): it => {
+    set text(font: ("Times New Roman", "SimHei"), size: 12pt, weight: "bold")
     set block(above: 1.5em, below: 1.5em)
     it
   }
@@ -106,9 +118,20 @@
 
   set par(
     justify: true,
-    leading: 1em,
+    leading: 1.5em,
+    spacing:1.5em,
     first-line-indent: (amount: 2em, all: true),
   )
+
+  // 设置代码块行距
+  show raw.where(block: true): it => {
+    set par(leading: 0.5em)
+    it
+  }
+
+  // 设置列表缩进，与正文保持一致
+  set list(indent: 2em)
+  set enum(indent: 2em)
 
   show heading: set block(
     above: 0.7em,
@@ -187,17 +210,17 @@ align(center)[#text(font:"FangSong",size:16pt)[
       measure[#id].width,
       measure[#contact].width
     ) + 1em
-    [姓#h(2em)名：#box(width: info_width, align(center)[#name])
+    [姓#h(2em)名 #box(width: info_width, align(center)[#name])
 
-    班#h(2em)级：#box(width: info_width, align(center)[#class])
+    班#h(2em)级 #box(width: info_width, align(center)[#class])
 
-    学#h(2em)号：#box(width: info_width, align(center)[#id])
+    学#h(2em)号 #box(width: info_width, align(center)[#id])
 
-    联系方式：#box(width: info_width, align(center)[#contact])
+    联系方式 #box(width: info_width, align(center)[#contact])
 
-    分#h(2em)数：#box(width: info_width, align(center)[#line(length: info_width)])
+    分#h(2em)数 #box(width: info_width, align(center)[#line(length: info_width)])
 
-    评#h(0.5em)分#h(0.5em)人：#box(width: info_width, align(center)[#line(length: info_width)])]
+    评#h(0.5em)分#h(0.5em)人 #box(width: info_width, align(center)[#line(length: info_width)])]
   }
 ]]
 
@@ -289,11 +312,15 @@ align(center)[#text(font:"FangSong",size:16pt)[
 
     #v(2em)
 
-    #text(fill: red,font:"FangSong")[*作者签名：*]
-    #if signature != none [
-      #image(signature, width: 3cm)
-    ] else [
-      #h(1fr)
-    ]
+    #grid(
+      columns: (auto, 1fr),
+      gutter: 1em,
+      text(fill: red,font:"FangSong")[*作者签名：*],
+      if signature != none [
+        #align(left)[#image(signature, width: 3cm)]
+      ] else [
+        []
+      ]
+    )
   ]
 }
